@@ -1,2 +1,1 @@
-# magento-eori-module
-magento-eori-module
+# outer/edge Magento Eori Module
