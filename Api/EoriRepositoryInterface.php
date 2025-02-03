@@ -7,5 +7,5 @@ interface EoriRepositoryInterface
      * @param string $eori
      * @return bool true on success
      */
-    public function validation($eori);
+    public function validation(string $eori);
 }

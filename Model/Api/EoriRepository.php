@@ -3,6 +3,8 @@ namespace OuterEdge\Eori\Model\Api;
 
 use OuterEdge\Eori\Api\EoriRepositoryInterface;
 use Davidvandertuijn\Eori\Validator as EoriValidator;
+use Magento\Framework\Webapi\Exception;
+use Magento\Framework\Phrase;
 
 class EoriRepository implements EoriRepositoryInterface
 {
@@ -16,9 +18,12 @@ class EoriRepository implements EoriRepositoryInterface
      */
     public function validation($eori)
     {
-        $this->eoriValidator->validate($eori);
+        try {
+            $this->eoriValidator->validate($eori);
+        } catch (\Exception $exception) {
+            throw new Exception(new Phrase($exception->getMessage()));
+        }
 
-        return [['success' => $eori->isValid()]];
+        return [['success' => $this->eoriValidator->isValid()]];
     }
-
 }
