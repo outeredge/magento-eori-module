@@ -15,11 +15,11 @@
         }
     ],
     "require": {
-        "php": "^8.1"
+        "php": "^8.1",
+        "davidvandertuijn/eori": "2.0.0"
     },
     "require-dev": {
-        "outeredge/dev-dependencies": "^3.0",
-        "davidvandertuijn/eori": "2.0.0"
+        "outeredge/dev-dependencies": "^3.0"
     },
     "autoload": {
         "files": [
