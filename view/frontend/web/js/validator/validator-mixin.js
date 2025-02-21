@@ -19,20 +19,18 @@ define([
                     return false;
                 }
 
-                // Do a fetch request to validate EORI
-                // TO DO: maybe create our own magento 2 module that does the request?
-                // return new Promise(function (resolve) {
-                //     fetch(`https://ec.europa.eu/taxation_customs/dds2/eos/eori_detail.jsp?Lang=en&EoriNumb=${encodeURIComponent(value)}`)
-                //         .then(response => response.text())
-                //         .then(text => {
-                //             if (text.includes("No records found")) {
-                //                 resolve(false);
-                //             } else {
-                //                 resolve(true);
-                //             }
-                //         })
-                //         .catch(() => resolve(false));
-                // });
+                return new Promise(function (resolve) {
+                    fetch(`${window.BASE_URL}/rest/V1/eori/validation/${encodeURIComponent(value)}`)
+                        .then(response => response.text())
+                        .then(text => {
+                            if (text.includes("No records found")) {
+                                resolve(false);
+                            } else {
+                                resolve(true);
+                            }
+                        })
+                        .catch(() => resolve(false));
+                });
             },
             $.mage.__("Invalid EORI number. Please enter a valid one.")
         );
