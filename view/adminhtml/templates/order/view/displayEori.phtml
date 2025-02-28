@@ -1,0 +1,10 @@
+<?php if ($eori = $block->getEoriNumber()): ?>
+    <table class="admin__table-secondary order-account-information-table">
+        <tbody>
+            <tr>
+                <th style="background-color: #fff;"><?= $block->escapeHtml(__('Eori Number')) ?></th>
+                <td style="background-color: #fff;"><?= $eori ?></td>
+            </tr>
+        </tbody>
+    </table>
+<?php endif; ?>
